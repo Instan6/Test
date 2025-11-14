@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faction Networks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and body styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Glowing header */
+        h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00ffe7;
+            text-shadow:
+                0 0 5px #00ffe7,
+                0 0 10px #00ffe7,
+                0 0 20px #00ffe7,
+                0 0 40px #00ffe7;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        h1:hover {
+            transform: scale(1.1) rotate(-2deg);
+        }
+
+        /* Logo styles */
+        .logo {
+            width: 150px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: drop-shadow(0 0 10px #00ffe7);
+        }
+
+        .logo:hover {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 20px #00ffe7) drop-shadow(0 0 30px #00ffe7);
+        }
+
+        /* Buttons */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .discord-btn {
+            background: #5865f2;
+            color: #fff;
+            box-shadow: 0 0 10px #5865f2, 0 0 20px #5865f2;
+        }
+
+        .discord-btn img {
+            width: 30px;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 5px #fff);
+        }
+
+        .discord-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #5865f2, 0 0 40px #5865f2;
+        }
+
+        .server-btn {
+            background: #00ff87;
+            color: #000;
+            box-shadow: 0 0 10px #00ff87, 0 0 20px #00ff87;
+        }
+
+        .server-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00ff87, 0 0 40px #00ff87;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Background particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: #00ffe7;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: particleMove 5s linear infinite;
+        }
+
+        @keyframes particleMove {
+            0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+            50% { opacity: 0.2; }
+            100% { transform: translateY(-100vh) translateX(50vw); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Glowing particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Server Logo -->
+    <img src="server-logo.png" alt="Faction Networks Logo" class="logo floating">
+
+    <!-- Glowing Title -->
+    <h1>Faction Networks</h1>
+
+    <!-- Buttons Container -->
+    <div>
+        <!-- Discord Button -->
+        <a href="discord.gg/factionnetworks" target="_blank" class="btn discord-btn floating">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord Logo">
+            Join Our Discord
+        </a>
+
+        <!-- Server Status Button -->
+        <a href="servers.fivem.net/servers/detail/ep8a4b" target="_blank" class="btn server-btn floating">
+            Check Server Status
+        </a>
+    </div>
+
+    <script>
+        // Generate background particles dynamically
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.width = `${Math.random() * 5 + 2}px`;
+            particle.style.height = particle.style.width;
+            particle.style.animationDuration = `${Math.random() * 5 + 3}s`;
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+
+</body>
+</html>
